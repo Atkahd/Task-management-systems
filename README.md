@@ -23,9 +23,12 @@ The Task Management System is a robust, full-stack web application designed to h
 ## Application Screenshots
 
 
-* **Login & Authentication:** `![Login Screen](/docs/login.png)`
-* **User Dashboard:** `![Dashboard View](/docs/dashboard.png)`
-* **Task Management:** `![Task View](/docs/tasks.png)`
+* **Login & Authentication:** ![image alt]()
+* **Register & Authentication:** ![image alt]()
+* **User Dashboard:** ![image alt]()
+* **Task Management:** ![image alt]()
+* **Admin Dashboard:** ![image alt]()
+* **Admin View:** ![image alt]()
 
 ##  Setup Instructions
 Follow these steps to run the project locally on your machine.
