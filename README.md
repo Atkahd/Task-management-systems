@@ -23,12 +23,12 @@ The Task Management System is a robust, full-stack web application designed to h
 ## Application Screenshots
 
 
-* **Login & Authentication:** ![image alt]()
-* **Register & Authentication:** ![image alt]()
-* **User Dashboard:** ![image alt]()
-* **Task Management:** ![image alt]()
-* **Admin Dashboard:** ![image alt]()
-* **Admin View:** ![image alt]()
+* **Login & Authentication:** ![image alt](https://github.com/Atkahd/Task-management-systems/blob/63aac00dbd58d1aa49c05dcc559610f0afc57bca/Screenshot%202026-09-07%20181842.png)
+* **Register & Authentication:** ![image alt](https://github.com/Atkahd/Task-management-systems/blob/63aac00dbd58d1aa49c05dcc559610f0afc57bca/Screenshot%202026-09-07%20181903.png)
+* **User Dashboard:** ![image alt](https://github.com/Atkahd/Task-management-systems/blob/63aac00dbd58d1aa49c05dcc559610f0afc57bca/Screenshot%202026-09-07%20182021.png)
+* **Task Management:** ![image alt](https://github.com/Atkahd/Task-management-systems/blob/63aac00dbd58d1aa49c05dcc559610f0afc57bca/Screenshot%202026-09-07%20182056.png)
+* **Admin Dashboard:** ![image alt](https://github.com/Atkahd/Task-management-systems/blob/63aac00dbd58d1aa49c05dcc559610f0afc57bca/Screenshot%202026-09-07%20182146.png)
+* **Admin View:** ![image alt](https://github.com/Atkahd/Task-management-systems/blob/63aac00dbd58d1aa49c05dcc559610f0afc57bca/Screenshot%202026-09-07%20182204.png)
 
 ##  Setup Instructions
 Follow these steps to run the project locally on your machine.
