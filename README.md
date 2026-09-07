@@ -62,19 +62,7 @@ The frontend will be available at `http://localhost:3000` and the backend at `ht
 ##  Environment Variable Documentation
 To run this project securely, you must configure environment variables for both the frontend and backend. Create a `.env` file in the respective root directories.
 
-**Backend (`/backend/.env`)**
-```env
-PORT=5000
-MONGODB_URI="mongodb+srv://atkahd097_db_user:U2vANCYDxb62f8CI@cluster0.vf7qkza.mongodb.net"
-JWT_SECRET=supersecretjwtkey12345
-FRONTEND_URL=task-management-systems-smoky.vercel.app
-```
 
-**Frontend (`/frontend/.env.local`)**
-```env
-# The URL pointing to your backend API
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-```
 
 ## Deployment Information
 This application is fully deployed and configured for production use. 
