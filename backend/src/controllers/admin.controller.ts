@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import User from '../models/User';
 import Task from '../models/Task';
 
+
 export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
   try {
     const users = await User.find().sort({ createdAt: -1 });
@@ -59,5 +60,41 @@ export const getDashboardStats = async (req: Request, res: Response): Promise<vo
     res.status(200).json({ success: true, message: 'Stats retrieved', data: { stats } });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Server error retrieving stats', error: (error as Error).message });
+  }
+};
+
+
+
+export const deleteUser = async (req: any, res: any) => {
+  try {
+    const userId = req.params.id;
+
+   
+    if (userId === req.user._id.toString()) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'You cannot delete your own admin account.' 
+      });
+    }
+
+    const user = await User.findByIdAndDelete(userId);
+
+    if (!user) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'User not found.' 
+      });
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      message: 'User deleted successfully.' 
+    });
+  } catch (error) {
+    console.error('Delete user error:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Server error while deleting user.' 
+    });
   }
 };

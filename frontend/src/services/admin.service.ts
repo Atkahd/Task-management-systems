@@ -21,3 +21,8 @@ export const getSystemStats = async (): Promise<DashboardStats> => {
   const response = await api.get('/admin/stats');
   return response.data.data.stats;
 };
+
+export const deleteUser = async (userId: string) => {
+  const response = await api.delete(`/admin/users/${userId}`);
+  return response.data;
+};

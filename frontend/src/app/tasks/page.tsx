@@ -12,7 +12,6 @@ import TaskDetailsModal from '@/components/tasks/TaskDetailsModal';
 import { Loader2, Plus } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
-// Updated column colors to match the dark glass UI theme
 const COLUMNS = [
   { id: 'TODO', title: 'To Do', color: 'bg-slate-500/5', borderColor: 'border-slate-500/20' },
   { id: 'DOING', title: 'In Progress', color: 'bg-indigo-500/5', borderColor: 'border-indigo-500/20' },
@@ -82,7 +81,6 @@ export default function TasksPage() {
           <p className="text-slate-400 mt-1">Manage your workflow and track progress.</p>
         </div>
         
-        {/* Velora Glowing Action Button */}
         <button 
           onClick={() => setIsCreateModalOpen(true)}
           className="flex items-center justify-center gap-2 bg-gradient-to-br from-indigo-500 to-purple-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:-translate-y-1 shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-all duration-300 border border-white/10"
@@ -99,7 +97,6 @@ export default function TasksPage() {
       )}
 
       {isError && (
-        // Velora Glass Error Panel
         <div className="bg-red-500/10 border border-red-500/20 backdrop-blur-sm text-red-400 p-4 rounded-xl text-sm">
           Failed to load tasks. Please try refreshing the page.
         </div>

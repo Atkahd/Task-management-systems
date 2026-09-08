@@ -42,9 +42,7 @@ export default function LoginPage() {
   };
 
   return (
-    // Removed the solid background; the layout.tsx gradient handles the background now
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      {/* Velora Glass Card Container */}
       <div className="max-w-md w-full space-y-8 bg-white/[0.055] backdrop-blur-[25px] border border-white/[0.09] shadow-[0_25px_80px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)] p-8 sm:p-10 rounded-[24px]">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white tracking-tight">Welcome back</h2>
@@ -58,7 +56,6 @@ export default function LoginPage() {
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {apiError && (
-            // Glass Error Banner
             <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 backdrop-blur-sm">
               <p className="text-sm text-center text-red-400">{apiError}</p>
             </div>

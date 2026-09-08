@@ -33,7 +33,6 @@ export default function DashboardPage() {
     <DashboardLayout>
       <div className="space-y-8">
         
-        {/* Velora Glass Welcome Panel */}
         <div className="bg-white/[0.055] backdrop-blur-[25px] border border-white/[0.09] shadow-[0_25px_80px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)] rounded-[24px] p-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Welcome back, {user.name} 
@@ -58,7 +57,6 @@ export default function DashboardPage() {
         {!isLoading && !isError && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             
-            {/* Stat Card: Total Tasks */}
             <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
               <div className="p-3.5 bg-indigo-500/10 text-indigo-400 rounded-[10px]">
                 <ListTodo className="w-6 h-6" />
@@ -69,7 +67,6 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Stat Card: To Do */}
             <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
               <div className="p-3.5 bg-slate-500/10 text-slate-300 rounded-[10px]">
                 <CircleDashed className="w-6 h-6" />
@@ -80,7 +77,6 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Stat Card: In Progress */}
             <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
               <div className="p-3.5 bg-purple-500/10 text-purple-400 rounded-[10px]">
                 <Clock className="w-6 h-6" />
@@ -91,7 +87,6 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Stat Card: Completed */}
             <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
               <div className="p-3.5 bg-cyan-500/10 text-cyan-400 rounded-[10px]">
                 <CheckCircle2 className="w-6 h-6" />

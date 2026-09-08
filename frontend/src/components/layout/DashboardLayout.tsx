@@ -24,12 +24,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   if (!user) return null;
 
   return (
-    // Removed solid background to let global gradient/orbs show through
     <div className="min-h-screen flex">
-      {/* Velora Glass Sidebar */}
       <aside className="hidden md:flex flex-col w-64 bg-white/[0.025] backdrop-blur-xl border-r border-white/[0.07] fixed inset-y-0 z-10">
         <div className="h-16 flex items-center px-6 border-b border-white/[0.07]">
-          {/* Logo with Gradient Text */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.4)]">
               <span className="text-white font-bold text-lg leading-none mt-0.5">✦</span>
@@ -39,7 +36,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
         
         <div className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
-          {/* Menu Section Title */}
           <div className="text-[10px] uppercase tracking-[1.5px] text-slate-500 font-semibold mb-3 px-3">
             Overview
           </div>
@@ -65,7 +61,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
 
         <div className="p-4 border-t border-white/[0.07]">
-          {/* Velora Workspace Profile Box */}
           <div className="flex items-center px-3 py-3 mb-3 bg-white/[0.03] border border-white/[0.05] rounded-xl backdrop-blur-sm">
             <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold mr-3 uppercase text-sm shadow-md">
               {user.name.charAt(0)}
@@ -86,7 +81,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       </aside>
 
-      {/* Velora Glass Mobile Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#070b16]/80 backdrop-blur-xl border-b border-white/[0.07] flex items-center justify-between px-4 z-30">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-[0_0_10px_rgba(99,102,241,0.4)]">
@@ -102,7 +96,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 z-20 bg-[#070b16]/60 backdrop-blur-md pt-16">
           <div className="bg-[#070b16]/95 border-r border-white/[0.07] w-full max-w-sm h-full shadow-2xl flex flex-col">

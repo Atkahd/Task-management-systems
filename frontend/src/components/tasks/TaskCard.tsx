@@ -26,7 +26,6 @@ export default function TaskCard({ task, onClick }: TaskCardProps) {
       {...listeners}
       {...attributes}
       onClick={onClick} 
-      // Velora Glass Card UI with hover elevation and drag focus
       className={`bg-white/[0.04] p-5 rounded-xl border border-white/[0.08] backdrop-blur-sm transition-all duration-200 cursor-grab active:cursor-grabbing touch-none hover:-translate-y-1 hover:bg-white/[0.06] hover:border-white/[0.12] hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)] ${
         isDragging ? 'shadow-2xl z-50 ring-2 ring-indigo-500/50 bg-white/[0.08] border-indigo-500/30 scale-105' : ''
       }`}

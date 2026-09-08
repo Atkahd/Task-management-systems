@@ -78,12 +78,9 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
   const canClaim = isUnassigned && !isAdmin; 
 
   return (
-    // Velora Glass Modal Backdrop
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070b16]/60 backdrop-blur-md">
-      {/* Velora Glass Modal Container */}
       <div className="bg-[#070b16]/80 backdrop-blur-[25px] border border-white/[0.09] shadow-[0_25px_80px_rgba(0,0,0,0.5)] rounded-[24px] w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
-        {/* Header */}
         <div className="flex items-start justify-between px-6 py-5 border-b border-white/[0.09] bg-white/[0.02]">
           <div>
             <div className="flex items-center gap-3 mb-2">
@@ -98,7 +95,6 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
           </button>
         </div>
 
-        {/* Body */}
         <div className="p-6 md:p-8 space-y-6">
           {apiError && (
             <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-400 backdrop-blur-sm">
@@ -148,7 +144,6 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
           </div>
         </div>
 
-        {/* Footer */}
         <div className="px-6 py-5 border-t border-white/[0.09] flex items-center justify-between bg-white/[0.02]">
           
           {canDelete ? (

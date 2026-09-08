@@ -55,12 +55,9 @@ export default function TaskModal({ isOpen, onClose }: TaskModalProps) {
   if (!isOpen) return null;
 
   return (
-    // Velora Glass Modal Backdrop
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070b16]/60 backdrop-blur-md">
-      {/* Velora Glass Modal Container */}
       <div className="bg-[#070b16]/80 backdrop-blur-[25px] border border-white/[0.09] shadow-[0_25px_80px_rgba(0,0,0,0.5)] rounded-[24px] w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
-        {/* Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.09] bg-white/[0.02]">
           <h2 className="text-xl font-bold text-white tracking-tight">Create New Task</h2>
           <button 
@@ -71,7 +68,6 @@ export default function TaskModal({ isOpen, onClose }: TaskModalProps) {
           </button>
         </div>
 
-        {/* Body & Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 sm:p-8">
           {apiError && (
             <div className="mb-5 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-400 backdrop-blur-sm">
@@ -111,7 +107,6 @@ export default function TaskModal({ isOpen, onClose }: TaskModalProps) {
             </div>
           </div>
 
-          {/* Footer Actions */}
           <div className="mt-8 flex items-center justify-end gap-3">
             <button
               type="button"
