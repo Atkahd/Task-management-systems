@@ -12,10 +12,11 @@ import TaskDetailsModal from '@/components/tasks/TaskDetailsModal';
 import { Loader2, Plus } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
+// Updated column colors to match the dark glass UI theme
 const COLUMNS = [
-  { id: 'TODO', title: 'To Do', color: 'bg-gray-100/80', borderColor: 'border-gray-200' },
-  { id: 'DOING', title: 'In Progress', color: 'bg-blue-50/80', borderColor: 'border-blue-100' },
-  { id: 'DONE', title: 'Completed', color: 'bg-green-50/80', borderColor: 'border-green-100' }
+  { id: 'TODO', title: 'To Do', color: 'bg-slate-500/5', borderColor: 'border-slate-500/20' },
+  { id: 'DOING', title: 'In Progress', color: 'bg-indigo-500/5', borderColor: 'border-indigo-500/20' },
+  { id: 'DONE', title: 'Completed', color: 'bg-cyan-500/5', borderColor: 'border-cyan-500/20' }
 ] as const;
 
 export default function TasksPage() {
@@ -77,13 +78,14 @@ export default function TasksPage() {
     <DashboardLayout>
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Tasks Board</h1>
-          <p className="text-gray-600 mt-1">Manage your workflow and track progress.</p>
+          <h1 className="text-3xl font-bold text-white tracking-tight">Tasks Board</h1>
+          <p className="text-slate-400 mt-1">Manage your workflow and track progress.</p>
         </div>
         
+        {/* Velora Glowing Action Button */}
         <button 
           onClick={() => setIsCreateModalOpen(true)}
-          className="flex items-center justify-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm"
+          className="flex items-center justify-center gap-2 bg-gradient-to-br from-indigo-500 to-purple-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:-translate-y-1 shadow-[0_10px_30px_rgba(99,102,241,0.3)] transition-all duration-300 border border-white/10"
         >
           <Plus className="w-4 h-4" />
           New Task
@@ -92,12 +94,13 @@ export default function TasksPage() {
 
       {isLoading && (
         <div className="flex justify-center items-center h-64">
-          <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+          <Loader2 className="w-8 h-8 text-indigo-400 animate-spin" />
         </div>
       )}
 
       {isError && (
-        <div className="bg-red-50 text-red-600 p-4 rounded-xl border border-red-100">
+        // Velora Glass Error Panel
+        <div className="bg-red-500/10 border border-red-500/20 backdrop-blur-sm text-red-400 p-4 rounded-xl text-sm">
           Failed to load tasks. Please try refreshing the page.
         </div>
       )}

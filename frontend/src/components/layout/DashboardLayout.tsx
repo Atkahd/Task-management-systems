@@ -24,13 +24,26 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <aside className="hidden md:flex flex-col w-64 bg-white border-r border-gray-200 fixed inset-y-0 z-10">
-        <div className="h-16 flex items-center px-6 border-b border-gray-200">
-          <span className="text-xl font-bold text-blue-600 tracking-tight">TaskFlow</span>
+    // Removed solid background to let global gradient/orbs show through
+    <div className="min-h-screen flex">
+      {/* Velora Glass Sidebar */}
+      <aside className="hidden md:flex flex-col w-64 bg-white/[0.025] backdrop-blur-xl border-r border-white/[0.07] fixed inset-y-0 z-10">
+        <div className="h-16 flex items-center px-6 border-b border-white/[0.07]">
+          {/* Logo with Gradient Text */}
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+              <span className="text-white font-bold text-lg leading-none mt-0.5">✦</span>
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">TaskFlow</span>
+          </div>
         </div>
         
-        <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+        <div className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+          {/* Menu Section Title */}
+          <div className="text-[10px] uppercase tracking-[1.5px] text-slate-500 font-semibold mb-3 px-3">
+            Overview
+          </div>
+
           {navigation.map((item) => {
             if (item.requiredRole === 'ADMIN' && user.role !== 'ADMIN') return null;
             const isActive = pathname.startsWith(item.href);
@@ -38,30 +51,34 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center px-3 py-2.5 rounded-lg transition-colors group ${
-                  isActive ? 'bg-blue-50 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                className={`flex items-center px-3 py-2.5 rounded-xl transition-all duration-300 group ${
+                  isActive 
+                    ? 'bg-gradient-to-r from-indigo-500/20 to-purple-500/10 text-white border border-indigo-500/20' 
+                    : 'text-slate-400 hover:bg-white/[0.05] hover:text-white'
                 }`}
               >
-                <item.icon className={`w-5 h-5 mr-3 ${isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'}`} />
-                {item.name}
+                <item.icon className={`w-5 h-5 mr-3 transition-colors ${isActive ? 'text-indigo-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
+                <span className="text-sm font-medium">{item.name}</span>
               </Link>
             );
           })}
         </div>
 
-        <div className="p-4 border-t border-gray-200">
-          <div className="flex items-center px-3 py-2 mb-2">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold mr-3 uppercase">
+        <div className="p-4 border-t border-white/[0.07]">
+          {/* Velora Workspace Profile Box */}
+          <div className="flex items-center px-3 py-3 mb-3 bg-white/[0.03] border border-white/[0.05] rounded-xl backdrop-blur-sm">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold mr-3 uppercase text-sm shadow-md">
               {user.name.charAt(0)}
             </div>
             <div className="flex flex-col overflow-hidden">
-              <span className="text-sm font-medium text-gray-900 truncate">{user.name}</span>
-              <span className="text-xs text-gray-500">{user.role}</span>
+              <span className="text-sm font-medium text-white truncate">{user.name}</span>
+              <span className="text-xs text-slate-400 mt-0.5">{user.role}</span>
             </div>
           </div>
+          
           <button 
             onClick={logout}
-            className="w-full flex items-center px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm font-medium"
+            className="w-full flex items-center px-3 py-2.5 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all duration-300 text-sm font-medium"
           >
             <LogOut className="w-4 h-4 mr-3" />
             Logout
@@ -69,20 +86,30 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       </aside>
 
-      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 z-20">
-        <span className="text-xl font-bold text-blue-600 tracking-tight">TaskFlow</span>
+      {/* Velora Glass Mobile Header */}
+      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#070b16]/80 backdrop-blur-xl border-b border-white/[0.07] flex items-center justify-between px-4 z-30">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-[0_0_10px_rgba(99,102,241,0.4)]">
+            <span className="text-white font-bold text-sm leading-none mt-0.5">✦</span>
+          </div>
+          <span className="text-lg font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">TaskFlow</span>
+        </div>
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-gray-500 hover:text-gray-700 focus:outline-none"
+          className="text-slate-300 hover:text-white focus:outline-none transition-colors"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-10 bg-gray-900/50 pt-16">
-          <div className="bg-white w-full max-w-sm h-full shadow-xl flex flex-col">
-            <div className="flex-1 py-4 px-3 space-y-1">
+        <div className="md:hidden fixed inset-0 z-20 bg-[#070b16]/60 backdrop-blur-md pt-16">
+          <div className="bg-[#070b16]/95 border-r border-white/[0.07] w-full max-w-sm h-full shadow-2xl flex flex-col">
+            <div className="flex-1 py-6 px-4 space-y-2">
+              <div className="text-[10px] uppercase tracking-[1.5px] text-slate-500 font-semibold mb-3 px-3">
+                Overview
+              </div>
               {navigation.map((item) => {
                 if (item.requiredRole === 'ADMIN' && user.role !== 'ADMIN') return null;
                 const isActive = pathname.startsWith(item.href);
@@ -91,20 +118,32 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center px-3 py-3 rounded-lg ${
-                      isActive ? 'bg-blue-50 text-blue-700 font-medium' : 'text-gray-600'
+                    className={`flex items-center px-4 py-3.5 rounded-xl transition-all duration-300 ${
+                      isActive 
+                        ? 'bg-gradient-to-r from-indigo-500/20 to-purple-500/10 text-white border border-indigo-500/20' 
+                        : 'text-slate-400 hover:bg-white/[0.05] hover:text-white'
                     }`}
                   >
-                    <item.icon className="w-5 h-5 mr-3" />
-                    {item.name}
+                    <item.icon className={`w-5 h-5 mr-3 ${isActive ? 'text-indigo-400' : 'text-slate-500'}`} />
+                    <span className="text-sm font-medium">{item.name}</span>
                   </Link>
                 );
               })}
             </div>
-            <div className="p-4 border-t border-gray-200">
+            
+            <div className="p-4 border-t border-white/[0.07]">
+              <div className="flex items-center px-4 py-3 mb-3 bg-white/[0.03] border border-white/[0.05] rounded-xl">
+                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold mr-3 uppercase text-sm">
+                  {user.name.charAt(0)}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-white">{user.name}</span>
+                  <span className="text-xs text-slate-400 mt-0.5">{user.role}</span>
+                </div>
+              </div>
               <button 
                 onClick={logout}
-                className="w-full flex items-center px-3 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm font-medium"
+                className="w-full flex items-center px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-colors text-sm font-medium"
               >
                 <LogOut className="w-5 h-5 mr-3" />
                 Logout
@@ -114,8 +153,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       )}
 
-      <main className="flex-1 md:ml-64 pt-16 md:pt-0 min-h-screen">
-        <div className="p-6 md:p-8 max-w-7xl mx-auto">
+      <main className="flex-1 md:ml-64 pt-16 md:pt-0 min-h-screen relative z-0">
+        <div className="p-6 md:p-8 lg:p-10 max-w-7xl mx-auto">
           {children}
         </div>
       </main>

@@ -2,30 +2,44 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-      <div className="max-w-3xl text-center space-y-6">
-        <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
-          Task Management System
-        </h1>
-        <p className="text-xl text-gray-600">
-          A secure, full-stack Kanban board built for productivity.
-        </p>
-        
-        <div className="flex items-center justify-center gap-4 pt-4">
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+      
+      {/* Velora Glowing Badge */}
+      <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm backdrop-blur-md">
+        <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]"></span>
+        The smarter way to manage your tasks
+      </div>
+
+      {/* Velora Hero Text */}
+      <h1 className="max-w-4xl text-5xl sm:text-7xl font-extrabold tracking-tight leading-[1.05] mb-6">
+        Your workflow, <br />
+        <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+          beautifully simplified.
+        </span>
+      </h1>
+
+      <p className="max-w-2xl text-lg text-slate-400 mb-12 leading-relaxed">
+        Bring your projects, analytics, and team together in one powerful workspace built for modern productivity.
+      </p>
+
+      {/* Velora Glass Container & Buttons */}
+      <div className="bg-white/[0.055] border border-white/[0.09] backdrop-blur-[25px] shadow-[0_25px_80px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)] rounded-[24px] p-8 sm:p-10 w-full max-w-lg mx-auto">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link 
             href="/login" 
-            className="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 text-white font-semibold hover:-translate-y-1 shadow-[0_15px_40px_rgba(99,102,241,0.3)] transition-all duration-300"
           >
-            Login
+            Log in →
           </Link>
           <Link 
             href="/register" 
-            className="px-6 py-3 rounded-lg bg-white text-gray-700 border border-gray-300 font-medium hover:bg-gray-50 transition-colors"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all duration-300"
           >
-            Register
+            Start Free
           </Link>
         </div>
       </div>
+
     </main>
   );
 }

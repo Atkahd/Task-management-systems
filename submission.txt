@@ -1,0 +1,17 @@
+
+FINAL SUBMISSION: TASK MANAGEMENT SYSTEM
+
+
+CANDIDATE CONTACT INFORMATION
+Name: Atheek Ahamed
+Email: atkahd097@gmail.com
+Whatsapp:0771854216
+
+PROJECT LINKS
+GitHub Repository: https://github.com/Atkahd/Task-management-systems
+Deployed Application: https://task-management-systems-smoky.vercel.app
+Backend API: https://task-management-systems-uvtc.onrender.com
+
+ADMINISTRATOR CREDENTIALS
+Email: admin@taskapp.com
+Password: SecureAdminPassword123!

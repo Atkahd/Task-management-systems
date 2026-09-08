@@ -22,7 +22,6 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
     enabled: !!user && user.role === 'ADMIN' && isOpen, 
   });
 
-
   const deleteMutation = useMutation({
     mutationFn: deleteTask,
     onSuccess: () => {
@@ -46,7 +45,6 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
     },
   });
 
-  
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       deleteMutation.mutate(task!._id);
@@ -71,7 +69,6 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
 
   if (!isOpen || !task || !user) return null;
 
- 
   const isCreator = task.creator._id === user._id;
   const isAssignedToMe = task.assignedUser?._id === user._id;
   const isAdmin = user.role === 'ADMIN';
@@ -81,51 +78,55 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
   const canClaim = isUnassigned && !isAdmin; 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+    // Velora Glass Modal Backdrop
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070b16]/60 backdrop-blur-md">
+      {/* Velora Glass Modal Container */}
+      <div className="bg-[#070b16]/80 backdrop-blur-[25px] border border-white/[0.09] shadow-[0_25px_80px_rgba(0,0,0,0.5)] rounded-[24px] w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
-        <div className="flex items-start justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+        {/* Header */}
+        <div className="flex items-start justify-between px-6 py-5 border-b border-white/[0.09] bg-white/[0.02]">
           <div>
-            <div className="flex items-center gap-3 mb-1">
-              <span className="text-xs font-bold px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm bg-white/10 text-slate-300 border border-white/20">
                 {task.status}
               </span>
             </div>
-            <h2 className="text-xl font-bold text-gray-900 leading-tight mt-2">{task.title}</h2>
+            <h2 className="text-2xl font-bold text-white tracking-tight leading-tight mt-1">{task.title}</h2>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors p-1">
+          <button onClick={onClose} className="text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full p-2 transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        {/* Body */}
+        <div className="p-6 md:p-8 space-y-6">
           {apiError && (
-            <div className="p-3 rounded-md bg-red-50 border border-red-200 text-sm text-red-600">
+            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-400 backdrop-blur-sm">
               {apiError}
             </div>
           )}
 
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-2">Description</h4>
-            <p className="text-gray-600 whitespace-pre-wrap text-sm leading-relaxed bg-gray-50 p-4 rounded-lg border border-gray-100">
+            <h4 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Description</h4>
+            <p className="text-slate-300 whitespace-pre-wrap text-sm leading-relaxed bg-white/[0.03] p-5 rounded-xl border border-white/[0.05]">
               {task.description || 'No description provided.'}
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
-              <span className="block text-xs font-medium text-gray-500 mb-1">Created By</span>
-              <span className="text-sm font-semibold text-gray-900">{task.creator.name}</span>
+            <div className="bg-white/[0.03] p-4 rounded-xl border border-white/[0.05]">
+              <span className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Created By</span>
+              <span className="text-sm font-semibold text-white">{task.creator.name}</span>
             </div>
-            <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
-              <span className="block text-xs font-medium text-gray-500 mb-1">Assignment</span>
+            <div className="bg-white/[0.03] p-4 rounded-xl border border-white/[0.05]">
+              <span className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Assignment</span>
               
               {isAdmin ? (
                 loadingUsers ? (
-                  <span className="text-sm text-gray-500 flex items-center"><Loader2 className="w-4 h-4 mr-1 animate-spin"/> Loading...</span>
+                  <span className="text-sm text-slate-400 flex items-center"><Loader2 className="w-4 h-4 mr-1 animate-spin"/> Loading...</span>
                 ) : (
                   <select 
-                    className="w-full text-sm font-semibold text-gray-900 bg-transparent border-b border-gray-300 focus:outline-none focus:border-blue-500 pb-1 cursor-pointer"
+                    className="w-full text-sm font-semibold text-white bg-transparent border-b border-white/20 focus:outline-none focus:border-indigo-400 pb-1 cursor-pointer [&>option]:bg-slate-900 [&>option]:text-white"
                     value={task.assignedUser?._id || 'unassigned'}
                     onChange={handleAdminAssign}
                     disabled={assignMutation.isPending}
@@ -139,7 +140,7 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
                   </select>
                 )
               ) : (
-                <span className={`text-sm font-semibold ${task.assignedUser ? 'text-gray-900' : 'text-gray-400 italic'}`}>
+                <span className={`text-sm font-semibold ${task.assignedUser ? 'text-white' : 'text-slate-500 italic'}`}>
                   {task.assignedUser ? task.assignedUser.name : 'Unassigned'}
                 </span>
               )}
@@ -147,15 +148,16 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
           </div>
         </div>
 
-        <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between bg-gray-50/50">
+        {/* Footer */}
+        <div className="px-6 py-5 border-t border-white/[0.09] flex items-center justify-between bg-white/[0.02]">
           
           {canDelete ? (
             <button
               onClick={handleDelete}
               disabled={deleteMutation.isPending}
-              className="flex items-center text-sm font-medium text-red-600 hover:text-red-700 disabled:opacity-50 transition-colors"
+              className="flex items-center text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 px-3 py-2 rounded-lg transition-all duration-200 disabled:opacity-50"
             >
-              {deleteMutation.isPending ? <Loader2 className="w-4 h-4 mr-1 animate-spin" /> : <Trash2 className="w-4 h-4 mr-1" />}
+              {deleteMutation.isPending ? <Loader2 className="w-4 h-4 mr-1.5 animate-spin" /> : <Trash2 className="w-4 h-4 mr-1.5" />}
               Delete Task
             </button>
           ) : (
@@ -167,7 +169,7 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
               <button
                 onClick={handleUnassign}
                 disabled={assignMutation.isPending}
-                className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                className="flex items-center px-4 py-2.5 text-sm font-medium text-white bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-200"
               >
                 <UserMinus className="w-4 h-4 mr-2" />
                 Unassign
@@ -178,7 +180,7 @@ export default function TaskDetailsModal({ task, isOpen, onClose }: TaskDetailsM
               <button
                 onClick={handleClaim}
                 disabled={assignMutation.isPending}
-                className="flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex items-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl hover:-translate-y-0.5 shadow-[0_10px_20px_rgba(99,102,241,0.3)] transition-all duration-200"
               >
                 <UserPlus className="w-4 h-4 mr-2" />
                 Claim Task

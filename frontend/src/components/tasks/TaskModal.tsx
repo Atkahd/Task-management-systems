@@ -55,67 +55,76 @@ export default function TaskModal({ isOpen, onClose }: TaskModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+    // Velora Glass Modal Backdrop
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070b16]/60 backdrop-blur-md">
+      {/* Velora Glass Modal Container */}
+      <div className="bg-[#070b16]/80 backdrop-blur-[25px] border border-white/[0.09] shadow-[0_25px_80px_rgba(0,0,0,0.5)] rounded-[24px] w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-lg font-semibold text-gray-900">Create New Task</h2>
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.09] bg-white/[0.02]">
+          <h2 className="text-xl font-bold text-white tracking-tight">Create New Task</h2>
           <button 
             onClick={() => { reset(); onClose(); }}
-            className="text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+            className="text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full p-2 transition-colors focus:outline-none"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="p-6">
+        {/* Body & Form */}
+        <form onSubmit={handleSubmit(onSubmit)} className="p-6 sm:p-8">
           {apiError && (
-            <div className="mb-4 p-3 rounded-md bg-red-50 border border-red-200 text-sm text-red-600">
+            <div className="mb-5 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-400 backdrop-blur-sm">
               {apiError}
             </div>
           )}
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Task Title</label>
+              <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Task Title</label>
               <input
                 {...register('title')}
                 type="text"
                 placeholder="E.g., Design homepage UI"
-                className={`w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.title ? 'border-red-300' : 'border-gray-300'
+                className={`w-full px-4 py-3 bg-white/5 text-white placeholder-slate-500 border rounded-xl shadow-sm focus:outline-none focus:ring-2 transition-all backdrop-blur-sm ${
+                  errors.title 
+                    ? 'border-red-400/50 focus:border-red-400 focus:ring-red-400/50' 
+                    : 'border-white/10 focus:border-indigo-500 focus:ring-indigo-500/50'
                 }`}
               />
-              {errors.title && <p className="mt-1 text-sm text-red-600">{errors.title.message}</p>}
+              {errors.title && <p className="mt-1.5 text-sm text-red-400">{errors.title.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Description (Optional)</label>
+              <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Description (Optional)</label>
               <textarea
                 {...register('description')}
                 rows={3}
                 placeholder="Add more details about this task..."
-                className={`w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.description ? 'border-red-300' : 'border-gray-300'
+                className={`w-full px-4 py-3 bg-white/5 text-white placeholder-slate-500 border rounded-xl shadow-sm focus:outline-none focus:ring-2 transition-all backdrop-blur-sm ${
+                  errors.description 
+                    ? 'border-red-400/50 focus:border-red-400 focus:ring-red-400/50' 
+                    : 'border-white/10 focus:border-indigo-500 focus:ring-indigo-500/50'
                 }`}
               />
-              {errors.description && <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>}
+              {errors.description && <p className="mt-1.5 text-sm text-red-400">{errors.description.message}</p>}
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-end gap-3">
+          {/* Footer Actions */}
+          <div className="mt-8 flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={() => { reset(); onClose(); }}
               disabled={isSubmitting}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-5 py-2.5 text-sm font-medium text-white bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-200"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+              className="flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl hover:-translate-y-0.5 shadow-[0_10px_20px_rgba(99,102,241,0.3)] transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0"
             >
               {isSubmitting ? (
                 <>

@@ -31,69 +31,74 @@ export default function DashboardPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="space-y-8">
         
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Welcome back, {user.name}! 👋
+        {/* Velora Glass Welcome Panel */}
+        <div className="bg-white/[0.055] backdrop-blur-[25px] border border-white/[0.09] shadow-[0_25px_80px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)] rounded-[24px] p-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Welcome back, {user.name} 
           </h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-slate-400 mt-2 text-sm sm:text-base">
             Here is a summary of your tasks and current progress.
           </p>
         </div>
 
         {isLoading && (
           <div className="flex justify-center py-12">
-            <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+            <Loader2 className="w-8 h-8 text-indigo-400 animate-spin" />
           </div>
         )}
 
         {isError && (
-          <div className="bg-red-50 text-red-600 p-4 rounded-xl border border-red-100">
+          <div className="bg-red-500/10 border border-red-500/20 backdrop-blur-sm text-red-400 p-4 rounded-xl text-sm">
             Failed to load tasks. Please try refreshing the page.
           </div>
         )}
 
         {!isLoading && !isError && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center space-x-4">
-              <div className="p-3 bg-blue-50 text-blue-600 rounded-lg">
+            {/* Stat Card: Total Tasks */}
+            <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
+              <div className="p-3.5 bg-indigo-500/10 text-indigo-400 rounded-[10px]">
                 <ListTodo className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">Total Tasks</p>
-                <h3 className="text-2xl font-bold text-gray-900">{stats.total}</h3>
+                <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">Total Tasks</p>
+                <h3 className="text-3xl font-bold text-white">{stats.total}</h3>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center space-x-4">
-              <div className="p-3 bg-gray-50 text-gray-600 rounded-lg">
+            {/* Stat Card: To Do */}
+            <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
+              <div className="p-3.5 bg-slate-500/10 text-slate-300 rounded-[10px]">
                 <CircleDashed className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">To Do</p>
-                <h3 className="text-2xl font-bold text-gray-900">{stats.todo}</h3>
+                <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">To Do</p>
+                <h3 className="text-3xl font-bold text-white">{stats.todo}</h3>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center space-x-4">
-              <div className="p-3 bg-yellow-50 text-yellow-600 rounded-lg">
+            {/* Stat Card: In Progress */}
+            <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
+              <div className="p-3.5 bg-purple-500/10 text-purple-400 rounded-[10px]">
                 <Clock className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">In Progress</p>
-                <h3 className="text-2xl font-bold text-gray-900">{stats.doing}</h3>
+                <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">In Progress</p>
+                <h3 className="text-3xl font-bold text-white">{stats.doing}</h3>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center space-x-4">
-              <div className="p-3 bg-green-50 text-green-600 rounded-lg">
+            {/* Stat Card: Completed */}
+            <div className="bg-white/[0.04] border border-white/[0.07] rounded-[17px] p-6 flex items-center space-x-4 hover:-translate-y-1 hover:bg-white/[0.07] transition-all duration-300">
+              <div className="p-3.5 bg-cyan-500/10 text-cyan-400 rounded-[10px]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">Completed</p>
-                <h3 className="text-2xl font-bold text-gray-900">{stats.done}</h3>
+                <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">Completed</p>
+                <h3 className="text-3xl font-bold text-white">{stats.done}</h3>
               </div>
             </div>
 
