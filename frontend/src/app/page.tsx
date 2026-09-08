@@ -16,9 +16,7 @@ export default function Home() {
         </span>
       </h1>
 
-      <p className="max-w-2xl text-lg text-slate-400 mb-12 leading-relaxed">
-        Bring your projects, analytics, and team together in one powerful workspace built for modern productivity.
-      </p>
+      
 
       <div className="bg-white/[0.055] border border-white/[0.09] backdrop-blur-[25px] shadow-[0_25px_80px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)] rounded-[24px] p-8 sm:p-10 w-full max-w-lg mx-auto">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
