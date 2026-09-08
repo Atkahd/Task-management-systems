@@ -64,13 +64,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
-    router.push('/login');
   };
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-[#070b16]">
+        <div className="bg-white/[0.05] p-6 rounded-[20px] backdrop-blur-xl border border-white/[0.07] shadow-[0_0_40px_rgba(99,102,241,0.15)] flex flex-col items-center justify-center">
+          <Loader2 className="w-10 h-10 text-indigo-400 animate-spin mb-3" />
+          <p className="text-slate-400 text-sm font-medium tracking-wide animate-pulse">Authenticating...</p>
+        </div>
       </div>
     );
   }

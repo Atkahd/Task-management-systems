@@ -34,6 +34,9 @@ export default function LoginPage() {
       const response = await api.post('/auth/login', data);
       
       login(response.data.data.token);
+
+      window.location.href = '/dashboard';
+      
     } catch (error: any) {
       setApiError(
         error.response?.data?.message || 'An error occurred during login. Please try again.'

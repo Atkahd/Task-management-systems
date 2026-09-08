@@ -35,6 +35,9 @@ export default function RegisterPage() {
       const response = await api.post('/auth/register', data);
       
       login(response.data.data.token);
+
+      window.location.href = '/dashboard';
+
     } catch (error: any) {
       setApiError(
         error.response?.data?.message || 'An error occurred during registration. Please try again.'

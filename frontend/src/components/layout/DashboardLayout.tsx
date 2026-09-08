@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query'; 
 import { LayoutDashboard, KanbanSquare, Users, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -14,6 +15,13 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { user, logout } = useAuth(); 
+  const queryClient = useQueryClient(); 
+
+  const handleLogout = () => {
+    logout(); 
+    queryClient.clear(); 
+    window.location.href = '/login'; 
+  };
   
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, requiredRole: 'USER' },
@@ -72,7 +80,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </div>
           
           <button 
-            onClick={logout}
+            onClick={handleLogout} 
             className="w-full flex items-center px-3 py-2.5 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all duration-300 text-sm font-medium"
           >
             <LogOut className="w-4 h-4 mr-3" />
@@ -135,7 +143,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 </div>
               </div>
               <button 
-                onClick={logout}
+                onClick={handleLogout} 
                 className="w-full flex items-center px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-colors text-sm font-medium"
               >
                 <LogOut className="w-5 h-5 mr-3" />
